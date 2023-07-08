@@ -1,0 +1,3 @@
+[submodule "tools/marvel-snap-scrapr"]
+	path = tools/marvel-snap-scrapr
+	url = https://github.com/bagley2014/marvel-snap-scrapr.git
