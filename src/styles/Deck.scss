@@ -1,0 +1,16 @@
+@use '@material/image-list/mixins' as image-list;
+
+.card-image-list {
+	@include image-list.standard-columns(6);
+}
+
+@media (max-width: 599px) {
+	.card-image-list {
+		@include image-list.standard-columns(3);
+	}
+}
+
+.card-image-list-label {
+	text-align: center;
+	width: 100%;
+}

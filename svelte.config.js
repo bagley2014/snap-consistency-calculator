@@ -20,6 +20,7 @@ export default {
 			'@': path.resolve('./src'),
 			'@components': path.resolve('./src/components'),
 			'@assets': path.resolve('./src/assets'),
+			'@styles': path.resolve('./src/styles'),
 		},
 	},
 }
