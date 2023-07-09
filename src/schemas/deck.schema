@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"Name": {
+			"type": "string"
+		},
+		"Cards": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/Card"
+			}
+		}
+	},
+	"required": [
+		"Cards",
+		"Name"
+	],
+	"title": "Deck",
+	"definitions": {
+		"Card": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"CardDefId": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"CardDefId"
+			],
+			"title": "Card"
+		}
+	}
+}

@@ -1,0 +1,74 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "#/definitions/CardDataValue"
+    },
+	"title": "CardData",
+    "definitions": {
+        "CardDataValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "power": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "ability": {
+                    "type": "string"
+                },
+                "series": {
+                    "$ref": "#/definitions/Series"
+                },
+                "imageUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".webp"
+                    ]
+                },
+                "imageName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ability",
+                "cost",
+                "id",
+                "imageName",
+                "imageUrl",
+                "name",
+                "power",
+                "series"
+            ],
+            "title": "CardDataValue"
+        },
+        "Series": {
+            "type": "string",
+            "enum": [
+                "Starter",
+                "Series 3",
+                "Series 2",
+                "Series 1",
+                "Series 4",
+                "Series 5",
+                "",
+                "Season Pass"
+            ],
+            "title": "Series"
+        }
+    }
+}
