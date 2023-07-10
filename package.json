@@ -13,7 +13,7 @@
 		"prepare": "npm run update-models && npm run smui-theme-light && npm run smui-theme-dark",
 		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
 		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
-		"update-models": "quicktype -s schema ./src/schemas/ -o ./src/generated/models.ts",
+		"update-models": "quicktype -s schema ./src/models/ -o ./src/generated/models.ts",
 		"refresh-data": "node ./tools/refreshData",
 		"postrefresh-data": "quicktype ./src/assets/marvel-snap-cards/data.json -o ./src/generated/CardData.ts"
 	},
