@@ -40,4 +40,3 @@ vite.config.ts.timestamp-*
 # generated on `npm run prepare`
 static/smui.css
 static/smui-dark.css
-src/generated/models.ts
