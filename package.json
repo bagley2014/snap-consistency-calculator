@@ -19,6 +19,9 @@
 		"update-models": "quicktype -s schema ./src/models/ -o ./src/generated/models.ts",
 		"refresh-data": "node ./tools/refreshData"
 	},
+	"dependencies": {
+		"radash": "^11.0.0"
+	},
 	"devDependencies": {
 		"@smui/button": "^7.0.0-beta.14",
 		"@smui/dialog": "^7.0.0-beta.14",
