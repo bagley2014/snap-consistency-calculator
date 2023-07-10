@@ -1,9 +1,11 @@
 <script lang="ts">
 	import rawCardData from '@assets/marvel-snap-cards/data.json'
-	import type { CardData } from '@/generated/models'
+	import type { CardData } from '@generated/models'
 	import Deck from '@components/Deck.svelte'
+	import DeckImporter from '@components/DeckImporter.svelte'
 
 	const cardData = rawCardData as { [id: string]: CardData }
+
 	let cards = [
 		cardData.NegasonicTeenageWarhead,
 		cardData.JeffTheBabyLandShark,
@@ -21,4 +23,6 @@
 </script>
 
 <h1>Hello and welcome to my site!</h1>
+
+<DeckImporter bind:importedDeck={cards} />
 <Deck {cards} />

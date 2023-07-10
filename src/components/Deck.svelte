@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@styles/Deck.scss'
-	import type { CardData } from '@/generated/CardData'
+	import type { CardData } from '@generated/models'
 	import ImageList, { ImageAspectContainer, Item, Label, Supporting, Image } from '@smui/image-list'
 	export let cards: CardData[]
 

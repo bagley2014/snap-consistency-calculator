@@ -17,7 +17,8 @@ export default {
 			strict: true,
 		}),
 		alias: {
-			'@': path.resolve('./src'),
+			'@lib': path.resolve('./src/lib'),
+			'@generated': path.resolve('./src/generated'),
 			'@components': path.resolve('./src/components'),
 			'@assets': path.resolve('./src/assets'),
 			'@styles': path.resolve('./src/styles'),
