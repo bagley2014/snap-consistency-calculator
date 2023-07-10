@@ -16,6 +16,5 @@
 	"semi": false,
 	"arrowParens": "avoid",
 	"endOfLine": "lf",
-	"editorconfig": false,
 	"quoteProps": "consistent"
 }

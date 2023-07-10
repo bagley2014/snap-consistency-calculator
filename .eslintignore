@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /build
+/dist
 /.svelte-kit
 /package
 .env
@@ -12,4 +13,6 @@ pnpm-lock.yaml
 package-lock.json
 yarn.lock
 
-/src/generated/*
+/src/generated
+/src/assets
+/tools/marvel-snap-scrapr
