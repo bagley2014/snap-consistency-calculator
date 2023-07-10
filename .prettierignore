@@ -15,6 +15,7 @@ package-lock.json
 yarn.lock
 
 **/*.yml
+/static
 /tools/marvel-snap-scrapr
 /src/generated
 /src/assets
