@@ -21,8 +21,18 @@ module.exports = {
 				parser: '@typescript-eslint/parser',
 			},
 		},
+		{
+			files: ['**/*.{js,cjs,mjs,jsx}'],
+			rules: {
+				'@typescript-eslint/no-var-requires': 'off',
+			},
+			env: {
+				node: true,
+			},
+		},
 	],
 	rules: {
-		'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+		'no-duplicate-imports': ['error', { includeExports: true }],
 	},
 }
