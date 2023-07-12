@@ -110,9 +110,9 @@ function parseExpression(node: Expression, state: State): number {
 	}
 }
 
-export function evaluate(input: string, deck: CardData[]) {
+export function evaluate(input: string, deck: CardData[], log?: string[]) {
 	const root = parse(input)
-	const state = { log: [], deck, turn: null }
+	const state = { log: log ?? [], deck, turn: null }
 	let probability = 1
 	for (const node of root.children) {
 		if (node.type == 'expr') probability *= parseExpression(node, state)

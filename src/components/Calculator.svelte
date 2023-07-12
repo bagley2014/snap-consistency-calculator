@@ -3,15 +3,22 @@
 	import Paper, { Title, Subtitle, Content } from '@smui/paper'
 	import { debounce } from 'radash'
 	import type { CardData } from '@generated/models'
+	import { evaluate } from '@lib/probabilityCalculator'
 
 	export let deck: CardData[]
 	let value = ''
-	let subtitle = 'Default Subtitle'
-	let content = 'Default content'
+	let subtitle = '-'
+	let log: string[] = []
 
+	// TODO somehow this component needs to update after a deck is imported
 	const onInputChanged = debounce({ delay: 100 }, _event => {
-		content = deck.toString()
-		subtitle = value
+		log = []
+		try {
+			const { probability } = evaluate(value, deck, log)
+			subtitle = `Probability: ${probability}`
+		} catch (e) {
+			subtitle = `Error: ${e instanceof Error ? e.message : 'unknown'}`
+		}
 	})
 </script>
 
@@ -20,5 +27,9 @@
 <Paper variant="unelevated">
 	<Title>Calculator Results</Title>
 	<Subtitle>{subtitle}</Subtitle>
-	<Content>{content}</Content>
+	<Content>
+		{#each log as entry}
+			{entry}<br />
+		{/each}
+	</Content>
 </Paper>
