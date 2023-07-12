@@ -6,12 +6,15 @@
 	import { evaluate } from '@lib/probabilityCalculator'
 
 	export let deck: CardData[]
-	let value = ''
-	let subtitle = '-'
+	let value = `(onTurn 4 (have shuri))
+(onTurn 5 (have skull))
+(onTurn 6 (have task))
+`
+	let subtitle = ''
 	let log: string[] = []
 
-	// TODO somehow this component needs to update after a deck is imported
-	const onInputChanged = debounce({ delay: 100 }, _event => {
+	export function reevaluate() {
+		console.log('reevaluate called')
 		log = []
 		try {
 			const { probability } = evaluate(value, deck, log)
@@ -19,7 +22,10 @@
 		} catch (e) {
 			subtitle = `Error: ${e instanceof Error ? e.message : 'unknown'}`
 		}
-	})
+	}
+
+	const onInputChanged = debounce({ delay: 100 }, reevaluate)
+	reevaluate()
 </script>
 
 <Textfield textarea bind:value on:input={onInputChanged} style="width: 96%; min-height:24em; margin-top:6px;" label="Calculator Script" />
