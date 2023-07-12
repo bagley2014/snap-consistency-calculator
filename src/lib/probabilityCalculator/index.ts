@@ -2,6 +2,8 @@ import type { CardData } from '@generated/models'
 import allCards from '@assets/marvel-snap-cards/data.json'
 import { isCardInDeck } from './utility'
 
+export { evaluate } from './inputParser'
+
 export function getProbabilityOfCardByTurn(deck: CardData[], card: CardData, turn: number) {
 	if (turn < 1) throw new RangeError(`turn should be at least 1 but was ${turn}`)
 

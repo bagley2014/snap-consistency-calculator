@@ -4,21 +4,7 @@
 	"ignorePaths": [],
 	"dictionaryDefinitions": [],
 	"dictionaries": [],
-	"words": [
-		"Doombot",
-		"listify",
-		"Mjolnir",
-		"quicktype",
-		"radash",
-		"Sauron",
-		"Shuri",
-		"Skrull"
-	],
-	"ignoreWords": [
-		"carddefid",
-		"MARVELSNAPZONE",
-		"scrapr",
-		"smui"
-	],
+	"words": ["Doombot", "listify", "Mjolnir", "quicktype", "radash", "Sauron", "sexpr", "Shuri", "Skrull"],
+	"ignoreWords": ["carddefid", "MARVELSNAPZONE", "scrapr", "smui"],
 	"import": []
 }

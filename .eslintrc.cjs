@@ -32,7 +32,10 @@ module.exports = {
 		},
 	],
 	rules: {
-		'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+		'@typescript-eslint/no-unused-vars': [
+			'error',
+			{ caughtErrorsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_', varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
+		],
 		'no-duplicate-imports': ['error', { includeExports: true }],
 	},
 }

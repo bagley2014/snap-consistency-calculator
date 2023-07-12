@@ -21,6 +21,7 @@
 		"refresh-data": "node ./tools/refreshData"
 	},
 	"dependencies": {
+		"@thi.ng/sexpr": "^0.4.40",
 		"radash": "^11.0.0"
 	},
 	"devDependencies": {

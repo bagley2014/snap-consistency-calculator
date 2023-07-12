@@ -1,26 +1,26 @@
 import { describe, expect, test } from 'vitest'
+import { evaluate, getProbabilityOfCardByTurn } from '@lib/probabilityCalculator'
 
 import type { CardData } from '@generated/models'
 import allCards from '@assets/marvel-snap-cards/data.json'
-import { getProbabilityOfCardByTurn } from '@lib/probabilityCalculator'
 import { replace } from 'radash'
 
-describe.concurrent('getProbabilityOfCardOnTurn', () => {
-	const basicDeck = [
-		allCards.Angel,
-		allCards.Abomination,
-		allCards.Angela,
-		allCards.Bast,
-		allCards.Beast,
-		allCards.JeffTheBabyLandShark,
-		allCards.Hulk,
-		allCards.Lizard,
-		allCards.Morph,
-		allCards.Valkyrie,
-		allCards.Venom,
-		allCards.Viper,
-	] as CardData[]
+const basicDeck = [
+	allCards.Angel,
+	allCards.Abomination,
+	allCards.Angela,
+	allCards.Bast,
+	allCards.Beast,
+	allCards.JeffTheBabyLandShark,
+	allCards.Hulk,
+	allCards.Lizard,
+	allCards.Morph,
+	allCards.Valkyrie,
+	allCards.Venom,
+	allCards.Viper,
+] as CardData[]
 
+describe.concurrent('getProbabilityOfCardOnTurn', () => {
 	test('card not in deck', () => {
 		expect(getProbabilityOfCardByTurn(basicDeck, allCards.SheHulk as CardData, 6)).toBe(0)
 	})
@@ -108,5 +108,33 @@ describe.concurrent('getProbabilityOfCardOnTurn', () => {
 		test('turn 2 quicksilver', () => {
 			expect(getProbabilityOfCardByTurn(deck, allCards.Quicksilver as CardData, 2)).toBe(1)
 		})
+	})
+})
+
+describe.concurrent('evaluate', () => {
+	// TODO add a test that checks 'have' with multiple operands
+	test('simple', () => {
+		const { probability, log } = evaluate('(onTurn 2 (have lizard))', basicDeck)
+		expect(log.length).toBeGreaterThan(0)
+		expect(probability).toBe(5 / 12)
+	})
+	test('two cards', () => {
+		// or operator not yet implemented
+		expect(() => evaluate('(onTurn 1 (or (have bast) (have angel)))', basicDeck)).toThrowError('not implemented')
+	})
+	test('two turns', () => {
+		const { probability, log } = evaluate('(onTurn 1 (have bast)) -> (onTurn 5 (have Val))', basicDeck)
+		expect(log.length).toBeGreaterThan(0)
+		// I don't think this math is actually right
+		expect(probability).toBe((4 / 12) * (8 / 12))
+	})
+	test('not in deck', () => {
+		const { probability, log } = evaluate('(onTurn 4 (have Hela))', basicDeck)
+		expect(log.length).toBeGreaterThan(0)
+		expect(probability).toBe(0)
+	})
+
+	test("have must be nested in 'onTurn'", () => {
+		expect(() => evaluate('(have abom)', basicDeck)).toThrowError('onTurn')
 	})
 })
